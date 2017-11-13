@@ -1,0 +1,13 @@
+node:
+    image: node:latest
+    user: node
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./volume/node/app:/home/node/app
+    ports:
+      - 127.0.0.1:8090:8090
+    external_links:
+      - mysqlredis_redis_1:redis
+    command: "nohup node /home/node/app/nodejs/server.js"
